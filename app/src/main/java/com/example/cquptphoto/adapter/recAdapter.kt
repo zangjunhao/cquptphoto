@@ -1,8 +1,12 @@
 package com.example.cquptphoto.adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,6 +16,7 @@ import android.widget.TextView
 import com.example.cquptphoto.ui.Particulars
 import com.example.cquptphoto.R
 import com.example.cquptphoto.bean.info
+import com.example.cquptphoto.ui.MainActivity
 
 class recAdapter: RecyclerView.Adapter<recAdapter.MyViewHolder> {
     lateinit var context: Context
@@ -28,6 +33,7 @@ class recAdapter: RecyclerView.Adapter<recAdapter.MyViewHolder> {
         return list.size as Int
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(p0: MyViewHolder, p1: Int) {
         p0.name.text=list[p1].name
         p0.stuNum.text=list[p1].stuNum
@@ -43,6 +49,8 @@ class recAdapter: RecyclerView.Adapter<recAdapter.MyViewHolder> {
             bundle.putString("classNum",list[p1].classNum)
             bundle.putString("birthday",list[p1].birthday)
             intent.putExtras(bundle)
+            intent.putExtra("transition", "fade")
+//            var transitionActivityOptions= ActivityOptions.makeSceneTransitionAnimation(context as Activity,p0.name,"name")
             context.startActivity(intent)
         }
     }

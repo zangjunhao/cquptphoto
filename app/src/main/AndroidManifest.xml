@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".ui.Particulars">
         </activity>
+        <activity android:name=".ui.PhotoActivity">
+        </activity>
     </application>
 
 </manifest>
